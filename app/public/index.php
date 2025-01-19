@@ -4,5 +4,5 @@ session_start();
 
 $uri = trim($_SERVER['REQUEST_URI'], '/');
 
-$router = new App\PatternRouter();
+$router = new app\patternrouter();
 $router->route($uri);
