@@ -9,4 +9,5 @@ class Comment
     public $content;
     public $created_at;
 
+    
 }
