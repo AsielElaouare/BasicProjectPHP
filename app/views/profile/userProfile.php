@@ -66,7 +66,7 @@ include __DIR__ . '/../header.php';
 
 <script>
     const userid = document.getElementById("user_id");
-    fetch(`/api/controllers/PostedTweetController?user_id=${userid.value}`)
+    fetch(`/api/controllers/postedtweetcontroller?user_id=${userid.value}`)
     .then(response => {
         if (!response.ok) {
             return response.text().then(text => {
