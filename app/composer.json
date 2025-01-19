@@ -1,10 +1,10 @@
 {
-    "name": "asiel-elaouare/twitter-clone",
-    "description": "Twitter Clone",
+    "name": "ahrnuld/php-mvc-basic",
+    "description": "Basic MVC blog example in PHP",
     "type": "project",
     "authors": [
         {
-            "name": "Asiel Elaouare INFB2"
+            "name": "Mark de Haan (Ahrnuld)"
         }
     ],
     "require": {},
