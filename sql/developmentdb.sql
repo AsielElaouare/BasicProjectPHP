@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jan 19, 2025 at 01:07 PM
+-- Generation Time: Mar 09, 2025 at 03:50 PM
 -- Server version: 11.5.2-MariaDB-ubu2404
 -- PHP Version: 8.2.25
 
@@ -35,13 +35,6 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `tweet_id`, `user_id`, `content`, `created_at`) VALUES
-(18, 23, 6, 'Yoo hello, this is an anonymous comment', '2025-01-19 12:41:58');
-
 -- --------------------------------------------------------
 
 --
@@ -66,16 +59,9 @@ CREATE TABLE `tweets` (
   `user_id` int(11) NOT NULL,
   `content` text NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `slug` text NOT NULL,
+  `slug` varchar(200) NOT NULL,
   `image` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
---
--- Dumping data for table `tweets`
---
-
-INSERT INTO `tweets` (`id`, `user_id`, `content`, `created_at`, `slug`, `image`) VALUES
-(23, 6, 'Fisrt tweet!!', '2025-01-19 12:34:33', 'fisrt-tweet--678cf159b2765', '/uploads/tweet-imgs/1737290073_hi-pictures-tcck71agqzigzjh7.jpg');
 
 -- --------------------------------------------------------
 
@@ -97,8 +83,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `profile_picture`, `created_at`) VALUES
-(6, 'Mario12', 'mario12@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '678cf123d55c2_Screenshot 2024-02-10 171924.png', NULL),
-(7, 'elaasiel@gmail.com', 'elaouareasiel82@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL);
+(1, 'mario12@gmail.com', 'rfewf@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
+(2, 'cabron', 'elaasiel@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '67cda4b6d183f_hand.png', NULL);
 
 --
 -- Indexes for dumped tables
@@ -143,25 +129,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
