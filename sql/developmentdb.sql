@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 09, 2025 at 03:50 PM
+-- Generation Time: Mar 23, 2025 at 09:15 PM
 -- Server version: 11.5.2-MariaDB-ubu2404
 -- PHP Version: 8.2.25
 
@@ -84,7 +84,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `profile_picture`, `created_at`) VALUES
 (1, 'mario12@gmail.com', 'rfewf@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
-(2, 'cabron', 'elaasiel@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '67cda4b6d183f_hand.png', NULL);
+(2, 'dsadsa', 'dsadsal@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '67df3de915a49_c6f6b73884ee15b2a6d450860af5d1d8.jpg', NULL),
+(3, 'dsadsads', 'mario12@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL),
+(4, 'Asiel Elaouare', 'elaasiel@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', '67e0017f36f64_960a927da223851051a4af5c3cbf8d99.jpg', NULL);
 
 --
 -- Indexes for dumped tables
@@ -129,25 +131,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
