@@ -36,6 +36,7 @@ class LoginController
             if (is_object($user)) {
                 $_SESSION['user_id'] = $user->id;
                 $_SESSION['username'] = $user->username;
+                $_SESSION['profile_pic'] = $user->profile_picture;
                 header('Location: /');
                 exit();
             }

@@ -24,7 +24,7 @@ class UserService
         }
 
         if ($this->userRepository->insert($username, $email, $password )) {
-            return 'Registration successful';
+            return $this->login($email, $password);
         }
 
         return 'Error during registration';
@@ -51,5 +51,13 @@ class UserService
             return false;
         }
         return $this->userRepository->updateProfilePicture($userId, $fileName);
+    }
+
+    public function updateProfile(int $userId, string $username, string $email): bool
+    {
+        if (empty($userId)) {
+            return false;
+        }
+        return $this->userRepository->updateUserInfo($userId, $username, $email);
     }
 }

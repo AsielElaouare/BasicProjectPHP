@@ -11,17 +11,22 @@ class LikeService
     {
         $this->likeRepository = new LikeRepository();
     }
-
     public function toggleLike($userId, $tweetId)
     {
+        $newLikeCount = 0;  
+        
         if ($this->likeRepository->isLiked($userId, $tweetId)) {
-            // Unlike if already liked
             $this->likeRepository->removeLike($userId, $tweetId);
-            return false; // Indicates the like was removed
+            $newLikeCount = $this->likeRepository->getLikesByTweetId($tweetId);
+            return ['success' => true, 'new_like_count' => $newLikeCount];
         } else {
-            // Add a like if not already liked
             $this->likeRepository->addLike($userId, $tweetId);
-            return true; // Indicates the like was added
+            $newLikeCount = $this->likeRepository->getLikesByTweetId($tweetId);
+            return ['success' => true, 'new_like_count' => $newLikeCount];
         }
+    }
+
+    public function getTweetLikes($tweetId){
+        $this->likeRepository->getLikesByTweetId($tweetId);
     }
 }

@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Services\UserService;
+use ReflectionFunctionAbstract;
 
 class ProfileController
 {
@@ -20,8 +21,6 @@ class ProfileController
         }
 
         $user = $this->userService->getUserById($_SESSION['user_id']);
-
-        // Display the profile page
         require __DIR__ . '/../views/profile/userProfile.php';
     }
 
@@ -47,6 +46,7 @@ class ProfileController
         
             if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
                 $this->userService->updateProfilePicture($userId, $fileName); 
+                $_SESSION['profile_pic'] = $fileName;
                 header('Location: /profile');
             } else {
                 header('Location: /profile.php?error=Error uploading file.');
@@ -55,5 +55,18 @@ class ProfileController
         }
     }
    
+    public function updateProfile() {
+        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            $inputData = json_decode(file_get_contents('php://input'), true);
     
+            if (isset($inputData['user_id']) && isset($inputData['username']) && isset($inputData['email'])) {
+                $this->userService->updateProfile($_SESSION["user_id"], $inputData['username'], $inputData['email']);
+                echo json_encode(['status' => 'success']);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Invalid data']);
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
+        }
+    }
 }

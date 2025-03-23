@@ -28,16 +28,16 @@ class RegisterController
         $email = htmlspecialchars($_POST['email']);
         $password = $_POST['password'];
 
-        $message = $this->userService->register($username, $email, $password);
+        $userInfo = $this->userService->register($username, $email, $password);
 
-        if ($message === 'User registered successfully') {
+        if (!is_string($userInfo) ) {
             // Store user data in session
-            $_SESSION['user_id'] = $message->id;         
-            $_SESSION['username'] = $message->username;  
-            $_SESSION['email'] = $message->email;        
+            $_SESSION['user_id'] = $userInfo->id;         
+            $_SESSION['username'] = $userInfo->username;  
+            $_SESSION['email'] = $userInfo->email;        
             
             header('Location: /');
-            exit();
+            exit;
         }
         require __DIR__ . '/../views/register/registerUser.php';
     }

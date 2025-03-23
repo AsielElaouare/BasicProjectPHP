@@ -46,10 +46,7 @@ class PatternRouter
             $controllerName = "App\\Controllers\\RegisterController";
             $methodName = 'show'; 
         }
-        if ($uri === 'like') {
-            $controllerName = "App\\Controllers\\LikeController";
-            $methodName = 'likeTweet'; 
-        }
+        
         if ($uri === 'tweet') {
             $controllerName = "App\\Controllers\\TweetController";
             $methodName = 'create'; 
@@ -63,8 +60,8 @@ class PatternRouter
             $methodName = 'index'; 
         }
 
-        if ($uri === 'api/controllers/postedtweetcontroller/deleteTweet') {
-            $controllerName = "App\\Api\\Controllers\\PostedTweetController";
+        if ($uri === 'api/controllers/deletetweet') {
+            $controllerName = "App\\Api\\Controllers\\DeleteTweetController";
             $methodName = 'delete'; 
         }
 

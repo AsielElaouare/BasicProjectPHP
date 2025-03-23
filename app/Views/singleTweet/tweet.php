@@ -5,9 +5,10 @@ include __DIR__ . '/../header.php';
 ?>
 
 <div class="container my-5 w-75">
+    <input type="text" name="id" value="<?php echo $tweet['id']; ?>" id="tweet-id" hidden>
     <div class="card shadow-sm">
         <div class="card-body">
-            <div class="mt-3 mb-3">
+            <div class="mt-3 mb-3 flex items-center">
                 <img src="<?php echo htmlspecialchars(!empty($tweet['profile_picture']) ? '/uploads/user-pic/' . $tweet['profile_picture'] : '/uploads/user-pic/default.jpg'); ?>" 
                 alt="Profile Picture" class="rounded-circle" width="50" height="50">
                 <span class="ms-2 h4 fw-bold"><?php echo htmlspecialchars($tweet['username']); ?></span>
@@ -16,15 +17,18 @@ include __DIR__ . '/../header.php';
             <div class="text-center mt-4">
             <?php
              if(!empty($tweet['image'])): ?>
-                 <img src="<?php echo htmlspecialchars($tweet['image']); ?>"  class="img-fluid mb-3 " style="max-width: 100%; height: auto;">
+                 <img src="<?php echo htmlspecialchars($tweet['image']); ?>"  class="img-fluid mb-3 mx-auto " style="max-width: 100%; height: auto;">
             <?php endif; ?>
             </div>
             <div class="d-flex justify-content-between">
             <p class="card-text text-muted">
                 <small>Posted on <?php echo date("Y-m-d H:i:s", strtotime($tweet['created_at'])); ?></small>
             </p>
-            <button class="btn btn-outline-danger btn-sm d-flex align-items-center">
-                            <i class="bi bi-heart me-1"></i><?php echo $tweet['likes_count'] ?? 0; ?> Likes</button>
+            <button class="flex items-center text-red-500 hover:text-red-600 like-btn" 
+                            data-tweet-id="<?php echo htmlspecialchars($tweet['id']); ?>">
+                        <i class="bi bi-heart-fill mr-2"></i>
+                        <span class="like-count"><?php echo htmlspecialchars($tweet['likes_count']); ?></span> Likes
+                    </button>
             </div>
         </div>
     </div>
@@ -61,47 +65,9 @@ include __DIR__ . '/../header.php';
     </div>
 </div>
 
-<?php include __DIR__ . '/../footer.php'; ?>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#comment-form').on('submit', function(e) {
-            e.preventDefault();  
-            
-            var content = $('#comment-content').val();
-            var tweetId = <?php echo $tweet['id']; ?>;
-            var form = $(this);
-            
-            $.ajax({
-                url: '/comment',  
-                method: 'POST',
-                data: {
-                    tweet_id: tweetId,
-                    content: content
-                },
-                success: function(response) {
-                    if (response.success) {
-                        var newComment = `
-                            <div class="card mb-3 comment-item">
-                                <div class="card-body">
-                                    <p class="card-text">${response.content}</p>
-                                    <p class="text-muted"><small>Commented by ${response.username} on ${response.created_at}</small></p>
-                                </div>
-                            </div>
-                        `;
-                        $('#comments-list').append(newComment);
-                        $('#comment-content').val(''); 
-                        location.reload();
-                    } else {
-                        location.reload();
-                    }
-                },
-                error: function() {
-                    alert('Error occurred while posting the comment.');
-                }
-            });
-        });
-    });
-</script>
+<script src="/js/like.js"></script>
+<script src="/js/comment.js"></script>
+<?php include __DIR__ . '/../footer.php'; ?>
