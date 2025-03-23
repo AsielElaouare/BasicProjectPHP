@@ -2,7 +2,7 @@
 namespace App\Api\Controllers;
 
 use App\Services\TweetService;
-
+use Exception;
 class PostedTweetController
 {
     private $tweetService;
